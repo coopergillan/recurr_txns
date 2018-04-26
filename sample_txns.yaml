@@ -1,0 +1,38 @@
+---
+DEFAULT_UNTIL: 2018-12-31
+TAB_MAP:
+  'Checking': 2
+  'Credit Card': 3
+recurr_txns:
+  - payee: John Doe
+    txn_descr: Childcare
+    rrule:
+      freq: WEEKLY
+      interval: 1
+      byweekday: FR
+    account: Checking
+    amount: -100.00
+  - payee: State Farm
+    txn_descr: Insurance payment
+    rrule:
+      freq: MONTHLY
+      interval: 1
+      bymonthday: 14
+    account: Checking
+    amount: -75.00
+  - payee: My employer
+    txn_descr: Pay estimate
+    rrule:
+      freq: WEEKLY
+      interval: 2
+      byweekday: FR
+    account: Checking
+    amount: 1000.00
+  - payee: My club
+    txn_descr: Annual membership fee
+    rrule:
+      freq: YEARLY
+      interval: 1
+      dtstart: 2018-10-01
+    account: Credit Card
+    amount: -110.00
