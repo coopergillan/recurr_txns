@@ -115,7 +115,7 @@ def main(yaml_config_file, output_to_file):
     # If indicated, send the sorted transaction strings to a file
     if output_to_file:
         df = pd.DataFrame(sorted_txn_strs)
-        df.to_csv('mysortedtxns.csv', delimiter='\t', index=False, header=False)
+        df.to_csv('mysortedtxns.csv', sep='\t', index=False, header=False)
 
     return sorted_txn_strs
 

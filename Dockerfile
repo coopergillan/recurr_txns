@@ -9,4 +9,4 @@ RUN \
 WORKDIR /app
 COPY . /app
 
-ENTRYPOINT ["python", "./recurr_txns.py", "sample_txns.yaml"]
+ENTRYPOINT ["python", "recurr_txns.py"]
