@@ -39,7 +39,10 @@ def get_txn_rrule(txn_dict, default_until=None):
     """Given transaction dictionary, return recurring rule."""
     txn_rrule_raw = txn_dict['rrule']
     txn_rrule_raw['freq'] = FREQ_MAP[txn_rrule_raw['freq']]
-    txn_rrule_raw['until'] = txn_rrule_raw.get('until', default_until)
+    txn_rrule_raw['until'] = datetime.combine(
+        txn_rrule_raw.get('until', default_until),
+        datetime.min.time()
+    )
     txn_rrule_raw['byweekday'] = FREQ_MAP.get(txn_rrule_raw.get('byweekday'))
     return rrule(**txn_rrule_raw)
 
@@ -71,8 +74,13 @@ def main(yaml_config_file, output_to_file):
         raw_config = yaml.safe_load(yaml_file)
 
     recurr_txns = get_recurr_txns(raw_config)
-    default_until = raw_config.get('DEFAULT_UNTIL',
-                                   datetime.today().replace(month=12, day=31))
+    default_until = datetime.combine(
+        raw_config.get(
+            'DEFAULT_UNTIL',
+            datetime.today().replace(month=12, day=31)
+        ),
+        datetime.min.time()
+    )
 
     all_txns = []
     for recurr_txn in recurr_txns:
