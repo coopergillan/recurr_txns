@@ -28,5 +28,5 @@ recurr_txns:
 Use the following command to generate the transactions
 
 ```zsh
-pipenv run python recurr_txns.py sample_txns.yaml
+pipenv run python lib/recurr_txns.py sample_txns.yaml
 ```
