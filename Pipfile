@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 pandas = "*"
-PyYaml = "*"
+"ruamel.yaml" = "*"
 
 [requires]
 python_version = "3.9"
