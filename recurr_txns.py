@@ -4,8 +4,8 @@ Recurring Transactions Generator
 
 from datetime import datetime
 from operator import itemgetter
+from ruamel.yaml import YAML
 import sys
-import yaml
 
 from dateutil.rrule import (
     rrule,
@@ -71,7 +71,7 @@ def show_txn_str(txn_dict, tab_map_dict):
 def main(yaml_config_file, output_to_file):
     """Get all recurring transactions and show them formatted properly."""
     with open(yaml_config_file) as yaml_file:
-        raw_config = yaml.safe_load(yaml_file)
+        raw_config = YAML(typ="safe").load(yaml_file)
 
     recurr_txns = get_recurr_txns(raw_config)
     default_until = datetime.combine(
