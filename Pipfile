@@ -5,6 +5,9 @@ verify_ssl = true
 
 [scripts]
 
+[dev-packages]
+black = "*"
+
 [packages]
 pandas = "*"
 "ruamel.yaml" = "*"
