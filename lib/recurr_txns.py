@@ -7,7 +7,7 @@ from operator import itemgetter
 from ruamel.yaml import YAML
 import sys
 
-from dateutil.rrule import rrule, MONTHLY, WEEKLY, YEARLY, SU, MO, TU, WE, TH, FR, SA
+from dateutil.rrule import *
 import pandas as pd
 
 FREQ_MAP = {
