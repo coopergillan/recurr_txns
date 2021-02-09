@@ -1,6 +1,6 @@
 #!/bin/bash
-pip install --upgrade pip
-pip install --no-cache-dir pipenv
+pip3 install --upgrade pip
+pip3 install --no-cache-dir pipenv
 
 pipenv --python 3.9
 
