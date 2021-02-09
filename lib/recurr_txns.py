@@ -5,10 +5,10 @@ Recurring Transactions Generator
 from datetime import datetime
 from operator import itemgetter
 from ruamel.yaml import YAML
+import csv
 import sys
 
 from dateutil.rrule import *
-import pandas as pd
 
 FREQ_MAP = {
     "MONTHLY": MONTHLY,
@@ -104,8 +104,9 @@ def main(yaml_config_file, output_to_file):
 
     # If indicated, send the sorted transaction strings to a file
     if output_to_file:
-        df = pd.DataFrame(sorted_txn_strs)
-        df.to_csv("results/mysortedtxns.csv", sep="\t", index=False, header=False)
+        with open("results/mysortedtxns.csv", "w") as _file:
+            writer = csv.writer(_file, delimiter="\t")
+            writer.writerows(sorted_txn_strs)
 
     return sorted_txn_strs
 
