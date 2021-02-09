@@ -32,6 +32,6 @@ recurr_txns:
     rrule:
       freq: YEARLY
       interval: 1
-      dtstart: 2018-10-01
+      dtstart: 2021-10-01
     account: Credit Card
     amount: -110.00
