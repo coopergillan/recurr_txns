@@ -1,12 +1,18 @@
-FROM python:3.7.3-stretch
+FROM python:3.9.1-slim
 
 RUN \
-    pip install \
-    numpy==1.16.3 \
-    pandas==0.24.2 \
-    PyYAML==5.1
+      pip3 install --upgrade pip \
+      && pip3 install --no-cache-dir pipenv
 
 WORKDIR /app
-COPY . /app
 
-ENTRYPOINT ["python", "recurr_txns.py"]
+COPY ./Pipfile ./Pipfile
+COPY ./Pipfile.lock ./Pipfile.lock
+
+RUN pipenv install --deploy
+
+COPY ./lib ./lib
+ADD ./input ./input
+RUN mkdir results
+
+ENTRYPOINT ["pipenv", "run", "python", "lib/recurr_txns.py"]
