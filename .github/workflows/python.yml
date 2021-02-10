@@ -1,0 +1,26 @@
+name: Python project
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build_lint_and_test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        script/bootstrap
+    - name: Lint and check black formatting
+      run: |
+        pipenv run black --check --diff .
+    - name: Test with pytest
+      run: |
+        pipenv run pytest

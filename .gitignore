@@ -1,2 +1,7 @@
-*.yaml
+# Do not allow any input or results files to be committed
+input/*
 results/*
+
+# For extra safety, do not allow any YAML files
+*.yaml
+*.yml
