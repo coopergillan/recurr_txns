@@ -35,9 +35,8 @@ def test_it_gets_correct_rrule(start_date, txn_dict_base):
         "dtstart": start_date,
     }
 
-    txn_rrule = get_txn_rrule(
-        txn_dict_base | {"rrule": rrule_info}, default_until=datetime(2020, 12, 31)
-    )
+    txn_dict = {**{"rrule": rrule_info}, **txn_dict_base}
+    txn_rrule = get_txn_rrule(txn_dict, default_until=datetime(2020, 12, 31))
 
     # Check for correct count and details of the first transaction
     assert len(list(txn_rrule)) == 3
@@ -49,5 +48,6 @@ def test_it_gets_correct_rrule(start_date, txn_dict_base):
 
 
 def test_it_shows_correct_string(txn_dict_base, start_date, tab_map_dict):
-    txn_string = show_txn_str(txn_dict_base | {"dt": start_date}, tab_map_dict)
+    txn_dict = {**{"dt": start_date}, **txn_dict_base}
+    txn_string = show_txn_str(txn_dict, tab_map_dict)
     assert txn_string == ["12/12/2020", "Martha Terry; Dog walking", "", "$35.50"]
