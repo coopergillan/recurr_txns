@@ -1,4 +1,4 @@
-FROM python:3.9.1-slim
+FROM python:3.7-slim
 
 RUN \
       pip3 install --upgrade pip \
