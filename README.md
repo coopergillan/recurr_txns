@@ -44,9 +44,11 @@ pipenv run python lib/recurr_txns.py input/sample_txns.yaml
 * Alternatively, run with Docker via `Makefile`. The transactions file **must be** placed in the `input/` directory:
 
 ```bash
-make INPUT_FILE=input/your_txns.yaml run
+make run INPUT_FILE=input/your_txns.yaml
 ```
 
 ## Building it
 
-`make build` will build the Docker image.
+```bash
+make build  # Builds the Docker image
+```
